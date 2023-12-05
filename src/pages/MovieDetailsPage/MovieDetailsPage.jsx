@@ -41,6 +41,6 @@ return (
 }
 
 export default MovieDetailsPage
-// постер, название фильма User Score (%) Overview (описание) Genres (жанр) секция Additional information в
+// постер
 // которой есть ссылки на Cast (при нажатии дополняется с низу состав актеров) и Reviews (при нажатии заменяются
 // данные Cast на Reviews)

@@ -15,7 +15,7 @@ const handleCast = async () => {
   }
 }
 handleCast()
-  }, [])
+  }, [movieId])
   const actors = actorsData.cast ? actorsData.cast.map(actor => 
     <ul key={actor.id}>
       <li >

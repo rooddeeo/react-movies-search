@@ -16,7 +16,7 @@ const ReviewsPage = () => {
 }
 handleReviews()
     }
-  }, [])
+  }, [movieId])
 const reviews = reviewsData.results ? reviewsData.results.map(review =>
     <ul key={review.id}>
       <li>
