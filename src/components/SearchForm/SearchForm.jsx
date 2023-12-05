@@ -1,17 +1,26 @@
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const SearchForm = ({onSearch}) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState('')
   
-  const handleSubmit = value => {
-    value.preventDefault();
-    console.log(searchParams.get('search'));
+  const handleChange = ({ target: { value } }) => {
+    setQuery(value)
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    setSearchParams({search: query});
     onSearch({ query: searchParams.get('search')});
   };
 
-  const handleChange = ({ target: { value } }) => {
-    setSearchParams({search: value});
-  };
+  useEffect(() => {
+  if(!query)
+  setSearchParams({})
+  }, [query, setSearchParams])
+  
+  
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -20,7 +29,7 @@ const SearchForm = ({onSearch}) => {
           autoComplete="off"
           autoFocus
           name="name"
-          value={searchParams.get('search')}
+          value={query}
           onChange={handleChange}
           placeholder="Search images and photos"
         />
