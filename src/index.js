@@ -6,7 +6,8 @@ import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.querySelector('#root')).render(
-  <BrowserRouter basename="/rooddeeo">
+  <BrowserRouter>
     <App />
   </BrowserRouter>
 );
+//basename="/rooddeeo"
