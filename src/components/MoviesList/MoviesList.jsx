@@ -1,26 +1,25 @@
-import { getMovies } from 'api/movies';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const MoviesList = () => {
-  const [gallery, setGallery] = useState([]);
+const MoviesList = ({ gallery }) => {
   const location = useLocation();
-  console.log(location);
 
-  useEffect(() => {
-    const handleMovies = async () => {
-      try {
-        const data = await getMovies('trending/all/day');
-        setGallery(prev => [...prev, ...data.results]);
-      } catch (error) {}
-    };
-    handleMovies();
-  }, []);
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+
   const newGallery = gallery.map(card => (
     <li key={card.id}>
-      <Link to={`/movies/${card.id.toString()}`} state={location}>
+      <Link to={`/movies/${card.id.toString()}`} state={{ from: location }}>
         <p>{card.title || card.name}</p>
-        <img src={card.poster_path} alt={card.title} />
+        <img
+          src={
+            card.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${card.poster_path}`
+              : defaultImg
+          }
+          width={250}
+          alt={card.title}
+        />
         <p>Language: {card.original_language} </p>
         <p>Popularity: {card.popularity} </p>
         <p>Release: {card.release_date} </p>
@@ -28,6 +27,7 @@ const MoviesList = () => {
       </Link>
     </li>
   ));
+
   return newGallery;
 };
 
