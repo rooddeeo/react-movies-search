@@ -1,8 +1,3 @@
-// import HomePage from 'pages/HomePage/HomePage';
-// import CastPage from 'pages/CastPage/CastPage';
-// import ReviewsPage from 'pages/ReviewsPage/ReviewsPage';
-// import MovieDetailsPage from 'pages/MovieDetailsPage/MovieDetailsPage.jsx';
-// import MoviesPage from 'pages/MoviesPage/MoviesPage.jsx';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'Layout/Layout';
 import { Suspense, lazy } from 'react';

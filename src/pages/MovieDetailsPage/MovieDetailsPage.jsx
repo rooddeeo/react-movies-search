@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
-  Link,
+  NavLink,
   Outlet,
   useLocation,
   useNavigate,
@@ -9,6 +9,7 @@ import {
 import { getMovies } from 'api/movies.js';
 import ErrorBackEnd from 'components/ErrorBackEnd/ErrorBackEnd';
 import Loader from 'components/Loader/Loader';
+import css from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState({});
@@ -46,28 +47,53 @@ const MovieDetailsPage = () => {
   const handleClick = () => {
     navigate(location.state?.from || '/');
   };
-
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   return (
     <>
       {errorBackEnd && <ErrorBackEnd errorBackEnd={errorBackEnd} />}
       {isLoader && <Loader />}
       {!errorBackEnd && !isLoader && (
-        <>
-          <button onClick={handleClick}>go to back</button>
-          <h1>
-            {movieDetails.title}
-            {`(${releaseYear})`}
-          </h1>
-          <p>User Score: {Math.round(movieDetails.vote_average * 10)}%</p>
-          <h2>Overview</h2>
-          <p>{movieDetails.overview}</p>
-          <h3>Genres</h3>
-          <p>{genres.join(' ')}</p>
-          <p>Additional information</p>
-          <Link to={`cast/${movieId}`}>Cast</Link>
-          <Link to={`reviews/${movieId}`}>Reviews</Link>
+        <div className={css.details}>
+          <button className={css.detailsBtn} onClick={handleClick}>
+            go to back
+          </button>
+          <div className={css.detailsBox}>
+            <img
+              className={css.detailsBoxImg}
+              src={
+                movieDetails.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                  : defaultImg
+              }
+              width={200}
+              alt={movieDetails.title}
+            />
+            <div className={css.detailsBoxInfo}>
+              <h1 className={css.detailsBoxTitle}>
+                {movieDetails.title}
+                {`(${releaseYear})`}
+              </h1>
+              <p className={css.detailsBoxParagraph}>
+                User Score: {Math.round(movieDetails.vote_average * 10)}%
+              </p>
+              <h2 className={css.detailsBoxSubTitle}>Overview</h2>
+              <p className={css.detailsBoxParagraph}>{movieDetails.overview}</p>
+              <h3 className={css.detailsBoxSubTitle}>Genres</h3>
+              <p className={css.detailsBoxParagraph}>{genres.join(' ')}</p>
+            </div>
+          </div>
+          <h4 className={css.detailsSubTitle}>Additional information</h4>
+          <div className={css.detailsNavLink}>
+            <NavLink className={css.detailsLink} to={`cast/${movieId}`}>
+              Cast
+            </NavLink>
+            <NavLink className={css.detailsLink} to={`reviews/${movieId}`}>
+              Reviews
+            </NavLink>
+          </div>
           <Outlet />
-        </>
+        </div>
       )}
     </>
   );

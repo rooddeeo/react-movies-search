@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import css from './SearchForm.module.css';
 
 const SearchForm = ({ onSearch }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState('');
 
   const handleChange = ({ target: { value } }) => {
-    if (!query) setSearchParams({});
+    if (!value) setSearchParams({});
     setQuery(value);
   };
 
@@ -24,17 +25,18 @@ const SearchForm = ({ onSearch }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className={css.formBox}>
         <input
+          className={css.input}
           type="text"
           autoComplete="off"
           autoFocus
           name="name"
           value={query}
           onChange={handleChange}
-          placeholder="Search images and photos"
+          placeholder="Search movies information"
         />
-        <button type="submit">
+        <button className={css.btn} type="submit">
           <span>Search</span>
         </button>
       </div>

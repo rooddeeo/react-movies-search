@@ -1,0 +1,24 @@
+.header {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #43d7ff;
+}
+
+.headerList {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+.headerListItem {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.headerListItem:hover {
+  border-bottom: 1px solid #43d7ff;
+  transition: transform 0.5s ease;
+  transform: scale(1.1);
+}

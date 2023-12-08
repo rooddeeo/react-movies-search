@@ -1,0 +1,29 @@
+.formBox {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+}
+
+.input {
+  color: #ffffff;
+  width: 300px;
+  margin-right: 30px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background-color: transparent;
+  border: 1px solid #43d7ff;
+}
+
+.btn {
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #43d7ff;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}

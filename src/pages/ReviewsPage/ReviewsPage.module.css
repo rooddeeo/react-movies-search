@@ -1,0 +1,21 @@
+.list {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.listItem {
+  margin-bottom: 40px;
+}
+
+.listItem:last-child {
+  margin-bottom: 0;
+}
+
+.listParagraphAuthor {
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.listParagraphContent {
+  font-style: italic;
+}

@@ -3,6 +3,7 @@ import ErrorBackEnd from 'components/ErrorBackEnd/ErrorBackEnd';
 import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import css from './CastPage.module.css';
 
 const CastPage = () => {
   const [actorsData, setActorsData] = useState({});
@@ -31,19 +32,24 @@ const CastPage = () => {
 
   const actors = actorsData.cast
     ? actorsData.cast.map(actor => (
-        <ul key={actor.id}>
-          <img
-            src={
-              actor.profile_path
-                ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
-                : defaultImg
-            }
-            width={150}
-            alt={actor.name}
-          />
-          <li>{actor.name}</li>
-          <li>{actor.character}</li>
-        </ul>
+        <li className={css.castListItem} key={actor.id}>
+          <>
+            <img
+              className={css.castItemImg}
+              src={
+                actor.profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+                  : defaultImg
+              }
+              width={150}
+              alt={actor.name}
+            />
+            <div className={css.castItemParagraph}>
+              <p className={css.castParagraphActor}>{actor.name}</p>
+              <p>{actor.character}</p>
+            </div>
+          </>
+        </li>
       ))
     : [];
 
@@ -51,7 +57,11 @@ const CastPage = () => {
     <>
       {errorBackEnd && <ErrorBackEnd errorBackEnd={errorBackEnd} />}
       {isLoader && <Loader />}
-      {!errorBackEnd && !isLoader && actors}
+      {!errorBackEnd && !isLoader && (
+        <div className={css.castBox}>
+          <ul className={css.castCardList}>{actors}</ul>
+        </div>
+      )}
     </>
   );
 };

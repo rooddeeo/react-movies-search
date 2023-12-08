@@ -1,0 +1,16 @@
+.list {
+  margin-bottom: 30px;
+}
+
+.listItem {
+  margin-left: 20px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid transparent;
+}
+
+.listItem:hover {
+  border-bottom: 1px solid #43d7ff;
+  transition: transform 0.5s ease;
+  transform: scale(1.1);
+  display: inline-block;
+}

@@ -1,0 +1,45 @@
+.listItem {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 270px;
+  border: 1px solid #3a424c;
+  width: calc((100% - 16px) / 3);
+}
+
+.listItem:hover {
+  transition: transform 0.5s ease;
+  transform: scale(1.02);
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.listItemTitle {
+  padding-bottom: 5px;
+}
+
+.listItemBox {
+  display: flex;
+}
+
+.listItemParagraph {
+  font-size: 10px;
+  padding-bottom: 5px;
+  margin-left: 5px;
+}
+
+.listItemImg {
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
