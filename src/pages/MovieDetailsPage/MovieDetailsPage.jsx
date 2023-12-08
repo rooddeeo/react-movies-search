@@ -85,10 +85,10 @@ const MovieDetailsPage = () => {
           </div>
           <h4 className={css.detailsSubTitle}>Additional information</h4>
           <div className={css.detailsNavLink}>
-            <NavLink className={css.detailsLink} to={`cast/${movieId}`}>
+            <NavLink className={css.detailsLink} to={`cast`}>
               Cast
             </NavLink>
-            <NavLink className={css.detailsLink} to={`reviews/${movieId}`}>
+            <NavLink className={css.detailsLink} to={`reviews`}>
               Reviews
             </NavLink>
           </div>

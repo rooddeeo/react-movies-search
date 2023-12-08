@@ -35,15 +35,11 @@ const ReviewsPage = () => {
         {isLoader && <Loader />}
         {reviewsData.results && reviewsData.results.length > 0 ? (
           reviewsData.results.map(review => (
-            <>
-              <li className={css.listItem} key={review.id}>
-                <p className={css.listParagraphAuthor}>
-                  Author: {review.author}
-                </p>
+            <li className={css.listItem} key={review.id}>
+              <p className={css.listParagraphAuthor}>Author: {review.author}</p>
 
-                <p className={css.listParagraphContent}>{review.content}</p>
-              </li>
-            </>
+              <p className={css.listParagraphContent}>{review.content}</p>
+            </li>
           ))
         ) : (
           <p className={css.paragraph}>

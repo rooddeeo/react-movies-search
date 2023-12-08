@@ -7,7 +7,6 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import css from './MoviesPage.module.css';
 
 const MoviesPage = () => {
-  // const [query, setQuery] = useState('');
   const [keywordResult, setKeywordResult] = useState([]);
   const location = useLocation();
   const [errorBackEnd, setErrorBackEnd] = useState('');
@@ -16,7 +15,6 @@ const MoviesPage = () => {
 
   useEffect(() => {
     const params = searchParams.get('search');
-    console.log(params);
     const handleMovies = async () => {
       try {
         setIsLoader(true);

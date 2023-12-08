@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import css from './SearchForm.module.css';
 
-const SearchForm = ({ onSearch }) => {
+const SearchForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState('');
+  const [inputUp, setInputUp] = useState(false);
 
   const handleChange = ({ target: { value } }) => {
     if (!value) setSearchParams({});
@@ -15,7 +16,7 @@ const SearchForm = ({ onSearch }) => {
     event.preventDefault();
     if (!query) return setSearchParams({});
     setSearchParams({ search: query });
-    onSearch({ query: searchParams.get('search') });
+    setInputUp(true);
   };
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const SearchForm = ({ onSearch }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className={css.formBox}>
+      <div className={`${css.formBox} ${inputUp ? css.inputUp : ''}`}>
         <input
           className={css.input}
           type="text"
