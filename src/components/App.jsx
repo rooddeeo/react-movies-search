@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'Layout/Layout';
-import { Suspense, lazy } from 'react';
-import Loader from './Loader/Loader';
+import { lazy } from 'react';
 
 const HomePage = lazy(() => {
   return import('pages/HomePage/HomePage');
@@ -25,30 +24,9 @@ const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="movies" element={<MoviesPage />} />
-        <Route
-          path="movies/:movieId"
-          element={
-            <Suspense fallback={<Loader />}>
-              <MovieDetailsPage />
-            </Suspense>
-          }
-        >
-          <Route
-            path="cast/:id"
-            element={
-              <Suspense fallback={<Loader />}>
-                <CastPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="reviews/:id"
-            element={
-              <Suspense fallback={<Loader />}>
-                <ReviewsPage />
-              </Suspense>
-            }
-          />
+        <Route path="movies/:movieId" element={<MovieDetailsPage />}>
+          <Route path="cast" element={<CastPage />} />
+          <Route path="reviews" element={<ReviewsPage />} />
         </Route>
       </Route>
     </Routes>
