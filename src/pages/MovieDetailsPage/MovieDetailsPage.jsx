@@ -1,11 +1,5 @@
-import { useEffect, useState } from 'react';
-import {
-  NavLink,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovies } from 'api/movies.js';
 import ErrorBackEnd from 'components/ErrorBackEnd/ErrorBackEnd';
 import Loader from 'components/Loader/Loader';
@@ -15,10 +9,11 @@ const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
   const [errorBackEnd, setErrorBackEnd] = useState('');
   const [isLoader, setIsLoader] = useState(false);
-
+  const backLinkLocation = useRef(location.state?.from ?? '/');
+  console.log(location);
+  console.log(backLinkLocation);
   useEffect(() => {
     if (!movieId) {
       return;
@@ -44,9 +39,7 @@ const MovieDetailsPage = () => {
   const genres = movieDetails.genres
     ? movieDetails.genres.map(genre => genre.name)
     : [];
-  const handleClick = () => {
-    navigate(location.state?.from || '/');
-  };
+
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   return (
@@ -55,9 +48,9 @@ const MovieDetailsPage = () => {
       {isLoader && <Loader />}
       {!errorBackEnd && !isLoader && (
         <div className={css.details}>
-          <button className={css.detailsBtn} onClick={handleClick}>
-            go to back
-          </button>
+          <div className={css.detailsBtn}>
+            <NavLink to={backLinkLocation.current}>go to back</NavLink>
+          </div>
           <div className={css.detailsBox}>
             <img
               className={css.detailsBoxImg}
