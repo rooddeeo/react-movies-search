@@ -12,6 +12,7 @@ const MoviesPage = () => {
   const [errorBackEnd, setErrorBackEnd] = useState('');
   const [isLoader, setIsLoader] = useState(false);
   const [searchParams] = useSearchParams();
+  const [inputUp, setInputUp] = useState(false);
 
   useEffect(() => {
     const params = searchParams.get('search');
@@ -22,6 +23,7 @@ const MoviesPage = () => {
           const data = await getSearchMovies(params);
           setKeywordResult(data.results);
           setIsLoader(false);
+          setInputUp(true);
         }
       } catch (error) {
         setErrorBackEnd(error.message);
@@ -39,7 +41,7 @@ const MoviesPage = () => {
       {isLoader && <Loader />}
       {!errorBackEnd && !isLoader && (
         <>
-          <SearchForm />
+          <SearchForm inputUp={inputUp} setInputUp={setInputUp} />
           <ul className={css.list}>
             {keywordResult.map(item => (
               <li className={css.listItem} key={item.id}>

@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import css from './SearchForm.module.css';
 
-const SearchForm = () => {
+const SearchForm = ({ inputUp, setInputUp }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState('');
-  const [inputUp, setInputUp] = useState(false);
 
   const handleChange = ({ target: { value } }) => {
     if (!value) setSearchParams({});
