@@ -1,9 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .list {
   margin-bottom: 30px;
 }
 
 .listItem {
-  margin-left: 20px;
+  margin-left: 30px;
   margin-bottom: 3px;
   border-bottom: 1px solid transparent;
 }
@@ -17,4 +23,16 @@
   transition: transform 0.5s ease;
   transform: scale(1.1);
   display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .listItem {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .listItem {
+    margin-left: 100px;
+  }
 }

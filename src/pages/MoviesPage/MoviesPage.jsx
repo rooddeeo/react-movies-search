@@ -42,20 +42,22 @@ const MoviesPage = () => {
       {!errorBackEnd && !isLoader && (
         <>
           <SearchForm inputUp={inputUp} setInputUp={setInputUp} />
-          <ul className={css.list}>
-            {keywordResult.map(item => (
-              <li className={css.listItem} key={item.id}>
-                <Link
-                  to={`/movies/${item.id.toString()}`}
-                  state={{ from: location }}
-                >
-                  <p className={css.listItemParagraph}>
-                    {item.title || item.name}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className={css.container}>
+            <ul className={css.list}>
+              {keywordResult.map(item => (
+                <li className={css.listItem} key={item.id}>
+                  <Link
+                    to={`/movies/${item.id.toString()}`}
+                    state={{ from: location }}
+                  >
+                    <p className={css.listItemParagraph}>
+                      {item.title || item.name}
+                    </p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </>
       )}
     </>

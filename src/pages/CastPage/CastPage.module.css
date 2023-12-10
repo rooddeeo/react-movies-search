@@ -1,6 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .castCardList {
   padding: 30px;
   display: flex;
+  justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
 }
@@ -10,19 +17,36 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 10px;
   box-shadow: 0px 2px 5px rgba(67, 215, 255, 0.5);
   max-width: 230px;
-  width: calc((100% - 16px) / 3);
+  width: calc((100% - 16px) / 1);
 }
 
 .castItemImg {
   margin-bottom: 10px;
 }
 
+.castItemParagraph {
+  font-size: 13px;
+}
+
 .castParagraphActor {
   font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .castListItem {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: calc((100% - 16px) / 3);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .castListItem {
+    width: calc((100% - 16px) / 4);
+  }
 }

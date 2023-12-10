@@ -58,7 +58,7 @@ const CastPage = () => {
       {errorBackEnd && <ErrorBackEnd errorBackEnd={errorBackEnd} />}
       {isLoader && <Loader />}
       {!errorBackEnd && !isLoader && (
-        <div className={css.castBox}>
+        <div className={css.container}>
           <ul className={css.castCardList}>{actors}</ul>
         </div>
       )}

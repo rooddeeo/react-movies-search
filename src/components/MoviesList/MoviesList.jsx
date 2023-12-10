@@ -38,7 +38,11 @@ const MoviesList = ({ gallery }) => {
     </li>
   ));
 
-  return <ul className={css.list}>{newGallery}</ul>;
+  return (
+    <div className={css.container}>
+      <ul className={css.list}>{newGallery}</ul>
+    </div>
+  );
 };
 
 export default MoviesList;

@@ -47,45 +47,49 @@ const MovieDetailsPage = () => {
       {errorBackEnd && <ErrorBackEnd errorBackEnd={errorBackEnd} />}
       {isLoader && <Loader />}
       {!errorBackEnd && !isLoader && (
-        <div className={css.details}>
-          <div className={css.detailsBtn}>
-            <NavLink to={backLinkLocation.current}>go to back</NavLink>
-          </div>
-          <div className={css.detailsBox}>
-            <img
-              className={css.detailsBoxImg}
-              src={
-                movieDetails.poster_path
-                  ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
-                  : defaultImg
-              }
-              width={200}
-              alt={movieDetails.title}
-            />
-            <div className={css.detailsBoxInfo}>
-              <h1 className={css.detailsBoxTitle}>
-                {movieDetails.title}
-                {`(${releaseYear})`}
-              </h1>
-              <p className={css.detailsBoxParagraph}>
-                User Score: {Math.round(movieDetails.vote_average * 10)}%
-              </p>
-              <h2 className={css.detailsBoxSubTitle}>Overview</h2>
-              <p className={css.detailsBoxParagraph}>{movieDetails.overview}</p>
-              <h3 className={css.detailsBoxSubTitle}>Genres</h3>
-              <p className={css.detailsBoxParagraph}>{genres.join(' ')}</p>
+        <div className={css.container}>
+          <div className={css.details}>
+            <div className={css.detailsBtn}>
+              <NavLink to={backLinkLocation.current}>go to back</NavLink>
             </div>
+            <div className={css.detailsBox}>
+              <img
+                className={css.detailsBoxImg}
+                src={
+                  movieDetails.poster_path
+                    ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                    : defaultImg
+                }
+                width={200}
+                alt={movieDetails.title}
+              />
+              <div className={css.detailsBoxInfo}>
+                <h1 className={css.detailsBoxTitle}>
+                  {movieDetails.title}
+                  {`(${releaseYear})`}
+                </h1>
+                <p className={css.detailsBoxParagraph}>
+                  User Score: {Math.round(movieDetails.vote_average * 10)}%
+                </p>
+                <h2 className={css.detailsBoxSubTitle}>Overview</h2>
+                <p className={css.detailsBoxParagraph}>
+                  {movieDetails.overview}
+                </p>
+                <h3 className={css.detailsBoxSubTitle}>Genres</h3>
+                <p className={css.detailsBoxParagraph}>{genres.join(' ')}</p>
+              </div>
+            </div>
+            <h4 className={css.detailsSubTitle}>Additional information</h4>
+            <div className={css.detailsNavLink}>
+              <NavLink className={css.detailsLink} to={`cast`}>
+                Cast
+              </NavLink>
+              <NavLink className={css.detailsLink} to={`reviews`}>
+                Reviews
+              </NavLink>
+            </div>
+            <Outlet />
           </div>
-          <h4 className={css.detailsSubTitle}>Additional information</h4>
-          <div className={css.detailsNavLink}>
-            <NavLink className={css.detailsLink} to={`cast`}>
-              Cast
-            </NavLink>
-            <NavLink className={css.detailsLink} to={`reviews`}>
-              Reviews
-            </NavLink>
-          </div>
-          <Outlet />
         </div>
       )}
     </>

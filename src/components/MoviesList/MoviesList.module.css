@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .listItem {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -5,7 +11,7 @@
   padding-right: 15px;
   max-width: 270px;
   border: 1px solid #3a424c;
-  width: calc((100% - 16px) / 3);
+  width: calc((100% - 16px) / 1);
 }
 
 .listItem:hover {
@@ -39,7 +45,19 @@
   gap: 10px;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  max-width: 1300px;
   margin-top: 25px;
   margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .listItem {
+    width: calc((100% - 16px) / 2);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .listItem {
+    width: calc((100% - 16px) / 4);
+  }
 }
