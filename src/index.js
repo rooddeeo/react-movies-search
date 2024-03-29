@@ -6,7 +6,7 @@ import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.querySelector('#root')).render(
-  <BrowserRouter basename="/goit-react-hw-05-movies">
+  <BrowserRouter basename="/react-movies-search">
     <App />
   </BrowserRouter>
 );
